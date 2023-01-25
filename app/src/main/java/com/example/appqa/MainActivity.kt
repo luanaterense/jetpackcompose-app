@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.contentDescription
 import androidx.compose.ui.semantics.semantics
 import androidx.compose.ui.semantics.testTag
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.appqa.ui.theme.AppQATheme
@@ -44,13 +45,13 @@ private fun App(
     val context = LocalContext.current;
     Surface(
         modifier = Modifier.fillMaxSize(),
-        color = MaterialTheme.colorScheme.background
+        color = MaterialTheme.colorScheme.background,
     )
     {
         Column(
             verticalArrangement = Arrangement.SpaceEvenly,
             horizontalAlignment = Alignment.CenterHorizontally,
-
+            modifier = Modifier.semantics { testTagsAsResourceId = true }
 
             )
         {
@@ -87,7 +88,7 @@ fun ActionButton(
     ElevatedButton(
         //modifier = Modifier.semantics {contentDescription = "btnCliqueAqui", text = "btnText",
 
-        //modifier = Modifier.semantics { testTag = "btnCliqueAquiTestTag"},
+        modifier = Modifier.semantics { testTag = "btnCliqueAquiTestTag"},
         onClick = block,
         shape = RoundedCornerShape(5.dp),
         colors = buttonColors,
